@@ -19,6 +19,22 @@ def cancel_shutdown():
     os.system("shutdown -a")
 
 
+def get_time_value():
+    user_input = input("请输入时间数字：")
+
+    if not user_input.isdigit():
+        print("时间必须是正整数")
+        return None
+
+    value = int(user_input)
+
+    if value <= 0:
+        print("时间必须大于 0")
+        return None
+
+    return value
+
+
 def main():
     print("Windows 定时关机小工具")
     print("1. 开始定时关机")
@@ -27,7 +43,11 @@ def main():
     choice = input("请选择功能：")
 
     if choice == "1":
-        value = int(input("请输入时间数字："))
+        value = get_time_value()
+
+        if value is None:
+            return
+
         unit = input("请输入单位，m 表示分钟，h 表示小时：")
 
         seconds = convert_to_seconds(value, unit)
