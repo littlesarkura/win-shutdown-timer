@@ -1,28 +1,10 @@
-import os
 import tkinter as tk
 from tkinter import messagebox
 
-
-def convert_to_seconds(value, unit):
-    if unit == "分钟":
-        return value * 60
-    elif unit == "小时":
-        return value * 3600
-    else:
-        return None
-
-
-def start_shutdown(seconds):
-    command = f"shutdown -s -t {seconds}"
-    os.system(command)
-
-
-def cancel_shutdown():
-    os.system("shutdown -a")
-
-
-def format_time_message(value, unit, seconds):
-    return f"已设置 {value} {unit}后关机，约 {seconds} 秒"
+from shutdown_timer import convert_to_seconds
+from shutdown_timer import start_shutdown
+from shutdown_timer import cancel_shutdown
+from shutdown_timer import format_time_message
 
 
 def handle_start_shutdown():
