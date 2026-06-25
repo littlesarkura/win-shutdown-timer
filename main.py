@@ -18,6 +18,13 @@ def start_shutdown(seconds):
 def cancel_shutdown():
     os.system("shutdown -a")
 
+def format_time_message(value, unit, seconds):
+    if unit == "m":
+        return f"已设置 {value} 分钟后关机，约 {seconds} 秒"
+    elif unit == "h":
+        return f"已设置 {value} 小时后关机，约 {seconds} 秒"
+    else:
+        return f"已设置 {seconds} 秒后关机"
 
 def get_time_value():
     user_input = input("请输入时间数字：")
@@ -50,7 +57,8 @@ def set_custom_shutdown():
         return
 
     start_shutdown(seconds)
-    print(f"已设置 {seconds} 秒后关机")
+    message = format_time_message(value, unit, seconds)
+    print(message)
 
 
 def show_menu():
@@ -71,16 +79,19 @@ def main():
         choice = input("请选择功能：")
 
         if choice == "1":
-            start_shutdown(30 * 60)
-            print("已设置 30 分钟后关机")
+            seconds = 30 * 60
+            start_shutdown(seconds)
+            print(format_time_message(30, "m", seconds))
 
         elif choice == "2":
-            start_shutdown(1 * 3600)
-            print("已设置 1 小时后关机")
+            seconds = 1 * 3600
+            start_shutdown(seconds)
+            print(format_time_message(1, "h", seconds))
 
         elif choice == "3":
-            start_shutdown(2 * 3600)
-            print("已设置 2 小时后关机")
+            seconds = 2 * 3600
+            start_shutdown(seconds)
+            print(format_time_message(2, "h", seconds))
 
         elif choice == "4":
             set_custom_shutdown()
