@@ -24,7 +24,8 @@ win-shutdown-timer/
 ├─ .gitignore
 ├─ README.md
 ├─ main.py
-└─ gui.py
+├─ gui.py
+└─shutdown_timer.py
 ```
 
 ## GUI 版本使用方法
